@@ -7,8 +7,8 @@
   "type": "module",
   "license": "UNLICENSED",
   "scripts": {
-    "build": "npx prisma generate && npx nest build",
-    "vercel-build": "npx prisma generate && npx nest build",
+  "build": "npx prisma generate && npx nest build && node fix-esm-imports.mjs",
+  "vercel-build": "npx prisma generate && npx nest build && node fix-esm-imports.mjs",
     "deploy": "nest deploy",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",
