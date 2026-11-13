@@ -130,14 +130,14 @@ export default function App() {
     if (status === 'DELIVERED') {
       return (
         <span className="badge" style={{ background: '#dcfce7', color: '#15803d', whiteSpace: 'nowrap' }}>
-          ✅ Giao thành công
+          Giao thành công
         </span>
       );
     }
     if (status === 'HANDED_OVER') {
       return (
         <span className="badge" style={{ background: '#dbeafe', color: '#1d4ed8', whiteSpace: 'nowrap' }}>
-          🚚 Đã bàn giao ĐVVC
+          Đã bàn giao ĐVVC
         </span>
       );
     }
@@ -164,7 +164,7 @@ export default function App() {
             }}
             title="Bấm để xem lý do hủy"
           >
-            <span>❌ Đã hủy đơn</span>
+            <span>Đã hủy đơn</span>
             <span>{isExpanded ? '▲' : '▼'}</span>
           </button>
 
@@ -189,7 +189,7 @@ export default function App() {
     }
     return (
       <span className="badge" style={{ background: '#fef3c7', color: '#b45309', whiteSpace: 'nowrap' }}>
-        ⏳ Đang chuẩn bị
+        Đang chuẩn bị
       </span>
     );
   };
@@ -536,8 +536,8 @@ export default function App() {
             if (!user) setActiveTab('market');
           }}
         >
-          <span>🟦</span>
-          <span>NexMarket Panel</span>
+          <span></span>
+          <span>NexMarket</span>
         </div>
 
         <nav className="sidebar-nav">
@@ -547,13 +547,13 @@ export default function App() {
                 className={`nav-item ${activeTab === 'market' ? 'active' : ''}`}
                 onClick={() => setActiveTab('market')}
               >
-                🏪 Sàn sản phẩm ({products.length})
+                Sàn sản phẩm ({products.length})
               </button>
               <button
                 className={`nav-item ${activeTab === 'auth' ? 'active' : ''}`}
                 onClick={() => setActiveTab('auth')}
               >
-                🔐 Đăng nhập / Đăng ký
+                Đăng nhập / Đăng ký
               </button>
             </>
           )}
@@ -564,13 +564,13 @@ export default function App() {
                 className={`nav-item ${activeTab === 'market' ? 'active' : ''}`}
                 onClick={() => setActiveTab('market')}
               >
-                🛒 Mua sắm trên sàn ({products.length})
+                Mua sắm trên sàn ({products.length})
               </button>
               <button
                 className={`nav-item ${activeTab === 'my-orders' ? 'active' : ''}`}
                 onClick={() => setActiveTab('my-orders')}
               >
-                📦 Đơn hàng đã mua ({myOrders.length})
+                Đơn hàng đã mua ({myOrders.length})
               </button>
             </>
           )}
@@ -581,13 +581,13 @@ export default function App() {
                 className={`nav-item ${activeTab === 'shop-products' ? 'active' : ''}`}
                 onClick={() => setActiveTab('shop-products')}
               >
-                📋 Sản phẩm của Shop ({myProducts.length})
+                Sản phẩm của Shop ({myProducts.length})
               </button>
               <button
                 className={`nav-item ${activeTab === 'shop-orders' ? 'active' : ''}`}
                 onClick={() => setActiveTab('shop-orders')}
               >
-                🚚 Đơn hàng của Shop ({shopOrders.length})
+                Đơn hàng của Shop ({shopOrders.length})
               </button>
             </>
           )}
@@ -598,19 +598,19 @@ export default function App() {
                 className={`nav-item ${activeTab === 'admin-shops' ? 'active' : ''}`}
                 onClick={() => setActiveTab('admin-shops')}
               >
-                🏪 Quản lý Người bán ({adminShops.length})
+                Quản lý Người bán ({adminShops.length})
               </button>
               <button
                 className={`nav-item ${activeTab === 'admin-users' ? 'active' : ''}`}
                 onClick={() => setActiveTab('admin-users')}
               >
-                👥 Quản lý Người mua ({adminCustomers.length})
+                Quản lý Người mua ({adminCustomers.length})
               </button>
               <button
                 className={`nav-item ${activeTab === 'market' ? 'active' : ''}`}
                 onClick={() => setActiveTab('market')}
               >
-                🌐 Xem giao diện Sàn ({products.length})
+                Xem giao diện Sàn ({products.length})
               </button>
             </>
           )}
@@ -859,7 +859,7 @@ export default function App() {
                         const isSelected = selectedAdminShopId === shop.id;
                         return (
                           <tr key={shop.id} style={{ background: isSelected ? '#eff6ff' : 'transparent' }}>
-                            <td><b>🏪 {shop.name}</b></td>
+                            <td><b>{shop.name}</b></td>
                             <td>
                               {shop.owner?.name}<br />
                               <small style={{ color: '#64748b' }}>{shop.owner?.email}</small>
@@ -918,7 +918,7 @@ export default function App() {
                 <div style={{ marginTop: 20, padding: 16, background: '#f8fafc', border: '1px solid #cbd5e1', borderRadius: 8 }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 }}>
                     <strong>
-                      📋 Chi tiết sản phẩm của Shop: {selectedAdminShop.name} ({selectedAdminShop.products?.length || 0} món)
+                      Chi tiết sản phẩm của Shop: {selectedAdminShop.name} ({selectedAdminShop.products?.length || 0} món)
                     </strong>
                     <button className="btn btn-outline" onClick={() => setSelectedAdminShopId(null)}>✕</button>
                   </div>
@@ -949,7 +949,7 @@ export default function App() {
                                     style={{ width: 44, height: 44, objectFit: 'cover', borderRadius: 4 }}
                                   />
                                 ) : (
-                                  <span>📦</span>
+                                  <span></span>
                                 )}
                               </td>
                               <td><b>{prod.name}</b></td>
@@ -1043,7 +1043,7 @@ export default function App() {
               {selectedAdminCustomer && (
                 <div style={{ marginTop: 20, padding: 16, background: '#f8fafc', border: '1px solid #cbd5e1', borderRadius: 8 }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 12 }}>
-                    <strong>📦 Chi tiết đơn hàng của: {selectedAdminCustomer.name} ({selectedAdminCustomer.email})</strong>
+                    <strong>Chi tiết đơn hàng của: {selectedAdminCustomer.name} ({selectedAdminCustomer.email})</strong>
                     <button className="btn btn-outline" onClick={() => setSelectedAdminCustomer(null)}>✕</button>
                   </div>
 
@@ -1140,10 +1140,10 @@ export default function App() {
                     {p.imageUrl ? (
                       <img src={p.imageUrl} alt={p.name} style={{ width: '100%', height: 150, objectFit: 'cover' }} />
                     ) : (
-                      <div style={{ height: 150, background: '#f1f5f9', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 32 }}>📦</div>
+                      <div style={{ height: 150, background: '#f1f5f9', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 32 }}></div>
                     )}
                     <div className="product-body">
-                      <div style={{ fontSize: 12, color: '#64748b' }}>🏪 {myShop.name}</div>
+                      <div style={{ fontSize: 12, color: '#64748b' }}>{myShop.name}</div>
                       <div style={{ fontWeight: 600, fontSize: 15, margin: '4px 0' }}>{p.name}</div>
                       <div style={{ fontWeight: 700, color: '#2563eb', fontSize: 16 }}>{p.price.toLocaleString('vi-VN')} ₫</div>
                       <div style={{ fontSize: 12, color: '#64748b', margin: '6px 0 12px' }}>SKU: {p.sku} | Kho: {p.stock}</div>
@@ -1223,10 +1223,10 @@ export default function App() {
                                   }
                                 }}
                               >
-                                <option value="PREPARING">⏳ Đang chuẩn bị</option>
-                                <option value="HANDED_OVER">🚚 Đã bàn giao ĐVVC</option>
-                                <option value="DELIVERED">✅ Giao thành công</option>
-                                <option value="CANCELLED">❌ Hủy đơn (Nhập lý do)...</option>
+                                <option value="PREPARING">Đang chuẩn bị</option>
+                                <option value="HANDED_OVER">Đã bàn giao ĐVVC</option>
+                                <option value="DELIVERED">Giao thành công</option>
+                                <option value="CANCELLED">Hủy đơn (Nhập lý do)...</option>
                               </select>
                             ) : (
                               <span style={{ fontSize: 12, color: '#94a3b8', whiteSpace: 'nowrap' }}>Đã hoàn tất</span>
@@ -1314,7 +1314,7 @@ export default function App() {
               <div className="panel-header">
                 <span className="panel-title">
                   {selectedShopView
-                    ? `🏪 Gian hàng: ${selectedShopView.name} (${displayedProducts.length} sản phẩm)`
+                    ? `Gian hàng: ${selectedShopView.name} (${displayedProducts.length} sản phẩm)`
                     : `Sản phẩm đang bày bán trên sàn (${displayedProducts.length})`}
                 </span>
                 {selectedShopView && (
@@ -1330,7 +1330,7 @@ export default function App() {
                     {p.imageUrl ? (
                       <img src={p.imageUrl} alt={p.name} style={{ width: '100%', height: 150, objectFit: 'cover' }} />
                     ) : (
-                      <div style={{ height: 150, background: '#f1f5f9', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 32 }}>📦</div>
+                      <div style={{ height: 150, background: '#f1f5f9', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 32 }}></div>
                     )}
                     <div className="product-body">
                       <div
@@ -1342,7 +1342,7 @@ export default function App() {
                           }
                         }}
                       >
-                        🏪 {p.shop?.name} (Xem Shop)
+                        {p.shop?.name} (Xem Shop)
                       </div>
                       <div style={{ fontWeight: 600, fontSize: 15, margin: '4px 0' }}>{p.name}</div>
                       <div style={{ fontWeight: 700, color: '#0f172a', fontSize: 16 }}>{p.price.toLocaleString('vi-VN')} ₫</div>
