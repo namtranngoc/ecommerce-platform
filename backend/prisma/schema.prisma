@@ -1,0 +1,76 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  SUPER_ADMIN
+  SHOP_OWNER
+  SHOP_STAFF
+  CUSTOMER
+}
+
+enum OrderStatus {
+  PREPARING
+  HANDED_OVER
+  DELIVERED
+  CANCELLED
+}
+
+model User {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  password  String
+  name      String
+  role      Role     @default(CUSTOMER)
+  shopId    String?
+  shop      Shop?    @relation("ShopStaff", fields: [shopId], references: [id])
+  ownedShop Shop?    @relation("ShopOwner")
+  createdAt DateTime @default(now())
+}
+
+model Shop {
+  id          String    @id @default(uuid())
+  name        String
+  description String?
+  isActive    Boolean   @default(true)
+  ownerId     String    @unique
+  owner       User      @relation("ShopOwner", fields: [ownerId], references: [id])
+  staffs      User[]    @relation("ShopStaff")
+  products    Product[]
+  orders      Order[]
+  createdAt   DateTime  @default(now())
+}
+
+model Product {
+  id        String   @id @default(uuid())
+  name      String
+  sku       String
+  price     Float
+  stock     Int
+  imageUrl  String?
+  shopId    String
+  shop      Shop     @relation(fields: [shopId], references: [id])
+  createdAt DateTime @default(now())
+}
+
+model Order {
+  id              String      @id @default(uuid())
+  totalAmount     Float
+  productId       String?
+  productName     String?
+  quantity        Int         @default(1)
+  buyerId         String?
+  buyerName       String?
+  buyerPhone      String?
+  shippingAddress String?
+  status          OrderStatus @default(PREPARING)
+  cancelReason    String?
+  shopId          String
+  shop            Shop        @relation(fields: [shopId], references: [id])
+  createdAt       DateTime    @default(now())
+}
