@@ -8,7 +8,7 @@ export class ProductService {
 
   // Tự động tìm đúng Shop của chủ shop ngay cả khi token cũ thiếu shopId
   private async resolveAndVerifyShop(userId: string, tokenShopId?: string) {
-    let shop = null;
+    let shop:any = null;
     if (tokenShopId) {
       shop = await this.prisma.shop.findUnique({ where: { id: tokenShopId } });
     }
