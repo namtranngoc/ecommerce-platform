@@ -6,7 +6,7 @@ let cachedServer: any;
 async function bootstrapServer() {
   if (!cachedServer) {
     const { NestFactory } = await import('@nestjs/core');
-    const { AppModule } = await import('../src/app.module');
+    const { AppModule } = await import('../dist/app.module.js');
     const express = await import('express');
 
     const app = await NestFactory.create(AppModule);
@@ -15,8 +15,9 @@ async function bootstrapServer() {
       methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
       credentials: true,
     });
-    app.use(express.json({ limit: '20mb' }));
-    app.use(express.urlencoded({ extended: true, limit: '20mb' }));
+    const expressLib = express.default || express;
+    app.use(expressLib.json({ limit: '20mb' }));
+    app.use(expressLib.urlencoded({ extended: true, limit: '20mb' }));
 
     await app.init();
     cachedServer = app.getHttpAdapter().getInstance();

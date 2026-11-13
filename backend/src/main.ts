@@ -1,7 +1,8 @@
 import 'dotenv/config';
 import { NestFactory } from '@nestjs/core';
-import { AppModule } from './app.module';
 import { json, urlencoded } from 'express';
+
+const { AppModule } = require('./app.module') as { AppModule: any };
 
 let cachedApp: any;
 
