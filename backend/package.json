@@ -6,9 +6,9 @@
   "private": true,
   "type": "module",
   "license": "UNLICENSED",
-  "scripts": {
-    "build": "prisma generate && nest build",
-    "vercel-build": "prisma generate && nest build",
+"scripts": {
+    "build": "npx prisma generate && npx nest build",
+    "vercel-build": "npx prisma generate && npx nest build",
     "deploy": "nest deploy",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",
@@ -20,7 +20,6 @@
     "test:watch": "node --experimental-vm-modules ./node_modules/jest/bin/jest.js --watch",
     "test:cov": "node --experimental-vm-modules ./node_modules/jest/bin/jest.js --coverage",
     "test:debug": "node --inspect-brk --experimental-vm-modules -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "node --experimental-vm-modules ./node_modules/jest/bin/jest.js --config ./test/jest-e2e.json",
-    "postinstall": "prisma generate"
-    }
+    "test:e2e": "node --experimental-vm-modules ./node_modules/jest/bin/jest.js --config ./test/jest-e2e.json"
   }
+}
