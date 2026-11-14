@@ -13,7 +13,7 @@ export const authApi = {
     axios.post(`${API_URL}/auth/register`, {
       name: data.name,
       email: data.email,
-      password: data.pass, // Lưu ý: Controller đang nhận @Body('password')
+      password: data.pass,
       accountType: data.accountType,
       shopName: data.shopName,
     }),
