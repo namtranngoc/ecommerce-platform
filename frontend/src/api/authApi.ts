@@ -1,36 +1,31 @@
-import axiosClient from './axiosClient';
+import axios from 'axios';
+
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
 
 export const authApi = {
-  sendOtp: (email: string) => {
-    return axiosClient.post('/auth/send-otp', { email });
-  },
-
   register: (data: {
     name: string;
     email: string;
     pass: string;
-    otp: string;
-    accountType: string;
+    accountType?: string;
     shopName?: string;
-  }) => {
-    return axiosClient.post('/auth/register', {
+  }) =>
+    axios.post(`${API_URL}/auth/register`, {
       name: data.name,
       email: data.email,
-      password: data.pass,
-      otp: data.otp,
+      password: data.pass, // Lưu ý: Controller đang nhận @Body('password')
       accountType: data.accountType,
       shopName: data.shopName,
-    });
-  },
+    }),
 
-  login: (data: { email: string; pass: string }) => {
-    return axiosClient.post('/auth/login', {
+  login: (data: { email: string; pass: string }) =>
+    axios.post(`${API_URL}/auth/login`, {
       email: data.email,
       password: data.pass,
-    });
-  },
+    }),
 
-  getProfile: () => {
-    return axiosClient.get('/auth/profile');
-  },
+  getProfile: () =>
+    axios.get(`${API_URL}/auth/profile`, {
+      headers: { Authorization: `Bearer ${localStorage.getItem('access_token')}` },
+    }),
 };
