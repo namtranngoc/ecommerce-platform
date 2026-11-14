@@ -9,26 +9,15 @@ import { Role } from '@prisma/client';
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
-const transporter = nodemailer.createTransport({
-  host: 'smtp.gmail.com',
-  port: 465,
-  secure: true,
-  auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS, // App Password 16 ký tự viết liền
-  },
-});
-
   @Post('register')
   async register(
     @Body('email') email: string,
     @Body('password') pass: string,
     @Body('name') name: string,
-    @Body('otp') otp: string,
     @Body('accountType') accountType?: string,
     @Body('shopName') shopName?: string,
   ) {
-    return this.authService.register(email, pass, name, otp, accountType, shopName);
+    return this.authService.register(email, pass, name, accountType, shopName);
   }
 
   @HttpCode(HttpStatus.OK)
